@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.UserMapper">
+
+    <!--由于在spring.xml中为com.ssm.entity设置了别名默认类名首字母小写，这里type直接用user-->
+    <!--查询时列表时，要指定resultMmp，否则报错Invalid bound statement (not found):-->
+    <!--通过id设置主键的映射关系，通过result设置非主键的映射关系-->
+
+    <resultMap id="userMap" type="user">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="age" property="age"/>
+        <result column="user_pho" property="userPho"/>
+        <result column="ctf_nbr" property="ctfNbr"/>
+        <result column="is_auth" property="isAuth"/>
+        <result column="last_modify_time" property="lastModifyTime"/>
+    </resultMap>
+
+    <select id="queryAllUser" resultMap="userMap">
+        select * from pd_user
+    </select>
+
+</mapper>
+
